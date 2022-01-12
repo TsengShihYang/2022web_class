@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--  -->
+
+    <!-- 先載入 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- 先載入 END-->
+
+    <script>
+        // $(function(){
+        $(document).ready(function () {
+            // for in
+            data = {
+                "id": 1,
+                "name": "Amy",
+                "salary": "50000",
+            }
+            for (const key in data) {
+                console.log(data[key]);
+            }
+            //foreach
+            myArr = [1, 2, 3, 4, 5, 7, 8, 9, 10];
+            myArr.forEach(function (item, index, array) {
+                console.log(item);
+            });
+            //forEach2
+            const dataNew = [
+                {
+                    "id": 1,
+                    "name": "Amy",
+                    "addr": "Taipei City",
+                    "mobile": "0912-345789",
+                    "sal": 30000,
+                    "bonus": 1000,
+                    "project": ['a', 'b'],
+                    "dataFun": function () {
+                        console.log('hello you');
+                        console.log('hello  ' + this.addr);
+                        return `baby ${this.name}`;
+                    },
+                    "arrowFun":function(){
+                        consol.log('hello arrowFun this ? ' + this.name);
+                    }
+
+                },
+                {
+                    "id": 2,
+                    "name": "John",
+                    "addr": "New Taipei City",
+                    "mobile": "0912-333333",
+                    "sal": 40000,
+                    "bonus": 10000,
+                    "project": ['c', 'b'],
+                },
+                {
+                    "id": 3,
+                    "name": "Wang",
+                    "addr": "Taipei City",
+                    "mobile": "0912-666666",
+                    "sal": 50000,
+                    "bonus": 100000,
+                    "project": ['a', 'c', 'f'],
+                }
+            ];
+            let total;
+            dataNew.forEach(function (value, index, array) {
+                total += value.bonus;
+            });
+            console.log('total', total);
+            console.log('dataNew', dataNew);
+
+            dataNew[0].dataFun();
+            
+            result = dataNew[0].dataFun();
+            console.log('result', result);
+
+
+        });       
+    </script>
+
+
+</body>
+
+</html>
