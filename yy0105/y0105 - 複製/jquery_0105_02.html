@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>2022年 新年好禮 大優惠 點擊拿優惠</h3>
+
+                <p id="hoverEvent">hoverEvent hoverEnter hoverOut Lorem ipsum, doet consectetur adipisicing
+                    elit. Distinctio minus eaque ea quaerat explicabo in odio maiores nulla provident, laborum fuga
+                    expedita ullam minima tenetur vitae rem fugit voluptas. Tenetur sequi consequatur ex delectus
+                    voluptas! Magnam hic voluptates tempora saepe, doloribus facilis mollitia consequatur possimus sed
+                    inventore quae obcaecati nostrum voluptatibus vel porro velit. Ducimus officia fugiat odit nemo
+                    deserunt assumenda beatae, aut qui iste natus debitis adipisci maiores nam recusandae quo. Aut amet
+                    quae culpa numquam quaerat dolorum alias modi magni, saepe temporibus suscipit eos voluptates.
+                    Assumenda accusantium quos harum est perspiciatis quo alias beatae in, iure, soluta optio rem omnis
+                    doloribus labore fuga temporibus sint vero ducimus eius maxime. Ipsum fugiat, voluptates amet
+                    voluptatem dolor blanditiis nam ullam deserunt aperiam suscipit maiores facilis quod, non harum, ea
+                    dolorum voluptatum corporis quas dicta alias animi mollitia sed? Ut, magni consequuntur voluptate,
+                    fuga sit laudantium officiis laboriosam deserunt similique placeat eligendi libero molestias, fugit
+                    facere? Totam quod, esse fugit magnam dolor facilis, atque odit tenetur possimus optio enim?
+                    Recusandae quaerat, provident exercitationem, esse harum, cumque eveniet quis eos distinctio porro
+                    veniam quas possimus. Sequi reprehenderit dolor rerum, ut vitae illum assumenda, repellat dicta, hic
+                    quasi provident? Deleniti mollitia, iure numquam illo iusto, blanditiis non dicta enim at
+                    perspiciatis ducimus eaque corporis, delectus quisquam harum dolore exercitationem! Libero ipsam
+                    tempore, nulla ipsum magnam deleniti facere optio perferendis quas, sit ducimus iure excepturi
+                    repellendus quisquam necessitatibus. Dolorum quidem accusantium labore ducimus alias obcaecati, rem,
+                    voluptas fuga magni excepturi enim ipsa repellendus pariatur dolore, beatae assumenda consequuntur
+                    voluptatum sint porro officia. Repellat vero, sapiente est repellendus debitis nostrum blanditiis
+                    quam. Consequatur amet cum odit quam rem vero, delectus eligendi eius fugit, id deleniti corrupti
+                    voluptatum dignissimos molestiae natus dolores recusandae, dolor aliquid. Nulla vel porro eaque,
+                    consequatur rem unde doloribus sunt eius sapiente?</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 mb-5">
+                <label for="myNumber">數量</label>
+            </div>
+            <div class="col-10 mb-5">
+                <input type="number" name="number" id="myNumber">
+            </div>
+
+            <div class="col-2 mb-5">
+                <label for="name">姓名</label>
+            </div>
+            <div class="col-10 mb-5">
+                <input type="text" name="name" id="name">
+            </div>
+
+            <div class="col-2 mb-5">
+                <label for="address">地址</label>
+            </div>
+            <div class="col-10 mb-5">
+                <input type="text" name="address" id="address">
+            </div>
+
+            <div class="col-12 mb-5">
+                <input type="hidden" name="price" id="priceHidden" value="500">
+            </div>
+
+            <div class="col-12 mb-5">
+                <button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 先載入 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- 先載入 END-->
+
+    <script>
+
+        $(document).ready(function () {
+
+            function discount() {
+                myNumberInput = parseInt($(this).val());
+                priceHidden = parseInt($("#priceHidden").val());
+                total = myNumberInput * priceHidden;
+
+                console.log("total", total);
+            }
+
+
+            // $(function(){
+            // 如果同時兩個focus 兩個都會執行
+            // 最後顯示最下方focus
+            // $('#focusInput3').focus();
+            // $('#focusInput2').focus();
+            $('input').first().focus();
+
+
+            $('button').click(function () {
+
+            });
+
+            // 點擊事件           
+            // 一次性
+            $('h3').one('click', function () {
+                $(this).css("background-color", "lightblue");
+                $(this).css("color", "white");
+                $(this).text('新年優惠價 特價100元');
+                $("#priceHidden").val('100');
+                count = $('#hiddenPrice').val();
+                if(!isNaN(count)){
+                    discount();
+                }
+
+                // console.log('one click');
+            });
+
+            // change
+            // blur
+            $('#myNumber').on('blur', function () {
+                myNumberInput = parseInt($(this).val());
+                priceHidden = parseInt($("#priceHidden").val());
+                total = myNumberInput * priceHidden;
+
+                console.log("total", total);
+            });
+
+            // 滑鼠移入事件
+            $('#mouseenterP').on('mouseenter', function () {
+                console.log('mouseenter');
+            });
+
+            // 滑鼠移出事件
+            $('#mouseoutP').on('mouseout', function () {
+                console.log('mouseout');
+            });
+
+
+            // 滑鼠移入事件1
+            // $('#mouseEvent').on('mouseenter', function () {
+            //     console.log('mouseenter');
+            // });
+
+            // // 滑鼠移出事件2
+            // $('#mouseEvent').on('mouseout', function () {
+
+            // });
+
+            // // 滑鼠移出事件3
+            // $('#mouseEvent').on('mouseup', function () {
+
+            // });
+
+            // 合併
+            // $('#mouseEvent').on('mouseup', function () {
+
+            // });
+
+            $("#mouseEvent").on({
+                mouseenter: function () {
+                    $(this).css("background-color", "lightgray");
+                    console.log('mouseout');
+
+                    // off 全部事件 
+                    // $('#mouseEvent').off();
+                    // off 單一事件
+                    // $('#mouseEvent').off('mouseenter');
+                },
+                mouseout: function () {
+                    $(this).css("background-color", "lightblue");
+                    console.log('mouseup');
+                },
+                mouseup: function () {
+                    $(this).css("background-color", "yellow");
+                    console.log('mouseup');
+                }
+            });
+
+
+            // hover
+            // hover(fun1,fun2)
+            $('#hoverEvent').hover(
+                function () {
+                    $(this).css("color", "red");
+                    console.log('hoverEnter');
+                }, function () {
+                    $(this).css("color", "black");
+                    console.log('hoverOut');
+                });
+
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

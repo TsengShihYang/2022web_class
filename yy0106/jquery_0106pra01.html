@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+    
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    
+                        <button type="button" class="color">color</button>
+                        <button type="button" class="dcolor">danger</button>
+                        <button type="button" class="wcolor">warning</button>
+                        <button type="button" class="add">add</button>
+                        <button type="button" class="del">delete</button>
+                        <button type="button" class="time">time</button>
+                    
+                </ol>
+                <ol>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing laboriosam.</li>
+                    
+                        <button type="button" class="color">color</button>
+                        <button type="button" class="dcolor">danger</button>
+                        <button type="button" class="wcolor">warning</button>
+                        <button type="button" class="add">add</button>
+                        <button type="button" class="del">delete</button>
+                        <button type="button" class="time">time</button>
+                    
+                </ol>
+            </div>
+        </div>
+       
+    </div>
+
+    <!--  -->
+
+    <!-- 先載入 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- 先載入 END-->
+
+    <script>
+        $(function(){
+        // $(document).ready(function () {
+        $('.color').on('click',function(){
+        $(this).siblings().filter('li').toggleClass('text-primary');  
+        });  
+
+        $('.dcolor').on('click',function(){
+        $(this).siblings().filter('li').attr('class','');  
+        $(this).siblings().filter('li').addClass('text-danger');  
+        // $(this).siblings().filter('li').toggleClass('text-danger');  
+        });  
+        
+        $('.wcolor').on('click',function(){
+        $(this).siblings().filter('li').attr('class','');  
+        $(this).siblings().filter('li').toggleClass('text-warning');  
+        }); 
+
+        $('.add').on('click',function(){
+        cloneli = $(this).siblings().filter('li').last().clone();
+        $(this).siblings().filter('li').last().after(cloneli); 
+        $(this).siblings().filter('li').html("you are good guy"); 
+        
+
+        }); 
+
+        $('.del').on('click',function(){
+        cloneli = $(this).siblings().filter('li').last().remove();
+        //     $('ol').find('li').first().after(cloneli);
+        // $(this).siblings().filter('li').last().after(cloneli);  
+        });
+        $('.time').on('click',function(){
+        cloneli = $(this).siblings().filter('li').last().clone();
+        //     $('ol').find('li').first().after(cloneli);
+        // $(this).siblings().filter('li').last().after(cloneli);
+        timeData = new Date();
+        $(this).siblings().filter('li').last().after(cloneli); 
+        $(this).siblings().filter('li').last().text(timeData); 
+
+        
+        });
+
+
+    
+    });
+    </script>
+
+
+</body>
+
+</html>
