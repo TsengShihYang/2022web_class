@@ -35,21 +35,22 @@ $(document).ready(function () {
     window.addEventListener('scroll', function () {
         // console.log('window',window);
         const y = Math.round(window.scrollY + navbar.height());
-        // console.log('navbar',navbar)
-        scrollReport.innerText = `目前所在的位置${y}`;
+        // console.log('navbar',navbar.height())
+        // scrollReport.innerText = `目前所在的位置${y}`;
+        scrollReport.text( `目前所在的位置${y}`);
         // console.log(`目前所在的位置${y}`);
 
         for (const key in navigationTable) {
             // console.log('navigationTable[key]',navigationTable[key]);
             const link = navigationTable[key].link;
             const section = navigationTable[key].section;
-            console.log('link',link);
-            console.log('section',section);
+            // console.log('link',link);
+            // console.log('section',section);
 
             //section top
-            const top = section.offset().top;
+            // const top = section.offset().top;
             //section bottom
-            const bottom = top + section.height();
+            // const bottom = top + section.height();
 
             if (y > top && y < bottom) {
                 link.addClass('text-warning');
