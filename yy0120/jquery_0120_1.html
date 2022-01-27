@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+            </div>
+        </div>
+       
+    </div>
+
+    <!--  -->
+
+    <!-- 先載入 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- 先載入 END-->
+
+    <script>
+        // $(function(){
+        $(document).ready(function () {
+        //    const other = "abc";
+        //    const name = " constName" ;
+        //    const myObj = {
+        //        'name' : 'Amy',
+        //        'tel':'0911-123456',
+        //        other:'12345',
+        //        'constName':'constNamevalue',
+        //    }
+        // console.log('myObj',myObj);
+        // console.log('myObj["name"]',myObj['name']);
+        // console.log('myObj.name',myObj.name);
+        // console.log('myObj[`${name}`]',myObj[`${name}`]);
+        // console.log('myObj[name]',myObj[name]);
+        // console.log('myObj[other]',myObj[other]);
+        // console.log('myObj["other"]',myObj['other']);
+
+        // const myArr = [2, 6, 7, 9, 11];
+        // myArr.forEach(function (value, key) {
+        //         myArr.push(value * 5000);
+        //     });
+        // const reduceArr = myArr.reduce((total, value) => {
+        //         return total + value;
+        //     },30000);
+
+        caseArr = [2, 6, 7, 9, 11];
+        bonusArr = caseArr.map(value=> {
+            if(value >10){
+                return value * 10000;
+            }else{
+                return value * 5000;
+            }
+        });
+        console.log('bonusAree',bonusArr);
+
+        reduceArr = bonusArr.reduce((value,total) => {
+                 return total + value;
+         },30000);        
+        console.log('reduceArr',reduceArr);
+       
+        });       
+    </script>
+
+
+</body>
+
+</html>

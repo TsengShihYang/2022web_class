@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul id="myUl">
+                    <li> this is test    </li>
+                    <li> this is test    </li>
+                    <li> this is test    </li>
+                </ul>
+
+            </div>
+        </div>
+       
+    </div>
+
+    <!--  -->
+
+    <!-- 先載入 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- 先載入 END-->
+
+    <script>
+        // $(function(){
+        $(document).ready(function () {
+//
+const myArr = [1, 2, 3, 4, 5, 6 ,7, 8, 9, 10];
+//正常方式
+// console.log(myArr[0]);
+// console.log(myArr[1]);
+// console.log(myArr[2]);
+// console.log(myArr[3]);
+
+// for迴圈
+// for( let i = 0 ;i < myArr.length ; i++){
+//     str = i + " is " + myArr[i];
+//     // console.log(str);
+//     // console.log(myArr[i]);
+//     console.log(`myArr[${i}]`,myArr[i]);
+// }
+
+//forEach  function第一放value(可自訂),第二放index ,這是規定
+str2= "";
+myArr.forEach(function (value, index, array){
+// console.log('MyArrvalue',value);
+// console.log('index',index);
+
+//載入到 html
+str2 += `<li>myArr[${value}] => ${value} </li>`;
+console.log(str2);
+// $('#myUl').html(str2);
+});
+//不洗掉 html 資料, 但要放在for迴圈之外
+// $('#myUl').append(str2);
+
+//方法一 map 製作新array
+// mapNewArr = myArr.map(function(value){
+//     return value*4;
+// });
+//上面用箭頭函式簡化,刪除function換箭頭 去掉前面value小括號  去掉大括號  去掉return
+mapNewArr = myArr.map( value => value * 8);
+console.log(mapNewArr);
+
+//方法二 製作新array
+newArr= [];
+myArr.forEach(function (value, key){
+  newArr.push(value * 2);
+//載入到 html
+str2 += `<li>myArr[${key}] x 2 => ${value * 2} </li>`;
+// console.log(str2);
+$('#myUl').html(str2);
+});
+
+
+//箭頭函式簡化
+//function(){}
+//()=>{}
+
+//function(value,key){}
+//(value,key)=>{}
+
+//function(value){}
+//(value)=>{}
+// value =>{}
+
+filterArr = myArr.filter((value,index) => (index % 2 == 0));
+console.log('filterArr =>',filterArr)
+
+findArr = myArr.find(value => (value > 5));
+console.log('findArr =>', findArr);
+
+everyArr = myArr.every(value => (value < 10));
+console.log('everyArr =>', everyArr);
+
+const reduceArr = myArr.reduce((total,value) => {
+    return total + value;
+},500);
+console.log('reduceArr =>', reduceArr);
+
+
+
+const myObj = { "0":2 , "1":4 , "2":6, "3":8, "4":10};
+const data = [
+            {
+                "id": 1,
+                "name": "Amy",
+                "addr": "Taipei City",
+                "mobile": "0912-345789",
+            },
+            {
+                "id": 2,
+                "name": "John",
+                "addr": "New Taipei City",
+                "mobile": "0912-333333",
+            },
+            {
+                "id": 3,
+                "name": "Wang",
+                "addr": "Taipei City",
+                "mobile": "0912-666666",
+            },
+
+]
+
+console.log('myArr',myArr);
+console.log(typeof(myArr));
+console.log('myArr',Array.isArray(myArr));
+
+console.log('myObj',myObj);
+console.log(typeof(myObj));
+console.log('myArr',Array.isArray(myObj));
+
+console.log(typeof(data));
+console.log('data',data);
+
+
+           
+        });       
+    </script>
+
+
+</body>
+
+</html>

@@ -36,7 +36,7 @@ $(document).ready(function () {
         // console.log('window',window);
         const y = Math.round(window.scrollY + navbar.height());
         // console.log('navbar',navbar)
-        scrollReport.innerText = `目前所在的位置${y}`;
+        scrollReport.text(`目前所在的位置${y}`);
         // console.log(`目前所在的位置${y}`);
 
         for (const key in navigationTable) {
