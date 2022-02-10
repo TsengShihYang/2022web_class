@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+       
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h3 class="text-center mt-3">天氣資料</h3>
+                <button type="button" class="btn btn-primary" id="btn">button</button>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+    <table  id="table_id" class="table table-striped display table-hover ">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>縣市</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <img src="./img/day/1.svg" alt="1.svg"> -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 先載入 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <!-- 先載入 END-->
+    <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+    <!-- <script src="./js/F-C0032-001.json"></script> -->
+
+    <script>
+      
+
+        $(document).ready(function () {
+          $.ajax({ 
+            type      : "get", 
+            url       : "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-4117DA5B-A967-4780-BA96-B40AB590E53A&downloadType=WEB&format=JSON",
+            dataType  : 'json',
+            success   : function(result) {
+            data = result.cwbopendata.dataset.location;
+            console.log('data', data);
+            //抓3段時間
+            const hourArr = [];
+            hourArr[0] = "凌晨";
+            hourArr[6] = "早上";
+            hourArr[12] = "中午";
+            hourArr[18] = "傍晚";
+            console.log('hourArr',hourArr);
+                
+            const time0 = new Date(data[0].weatherElement[0].time[0].startTime);
+            const time1 = new Date(data[0].weatherElement[0].time[1].startTime);
+            const time2 = new Date(data[0].weatherElement[0].time[2].startTime);
+            timeText0 = `${time0.getFullYear()} / ${time0.getMonth()} / ${time0.getDate()} ${hourArr[time0.getHours()]}`;
+            timeText1 = `${time1.getFullYear()} / ${time1.getMonth()} / ${time1.getDate()} ${hourArr[time1.getHours()]}`;
+            timeText2 = `${time2.getFullYear()} / ${time2.getMonth()} / ${time2.getDate()} ${hourArr[time2.getHours()]}`;
+            console.log('timeText0',timeText0);
+            console.log('timeText1',timeText1);
+            console.log('timeText2',timeText2);
+
+            $('tr>th').eq(2).text(timeText0);  
+            $('tr>th').eq(3).text(timeText1);  
+            $('tr>th').eq(4).text(timeText2);  
+
+            const iconText0 = (time0.getHours() == 6 || time0.getHours() == 12) ? 'day' : 'night';
+            const iconText1 = (time1.getHours() == 6 || time1.getHours() == 12) ? 'day' : 'night';
+            const iconText2 = (time2.getHours() == 6 || time2.getHours() == 12) ? 'day' : 'night';
+
+            for (let i = 0; i < data.length; i++) {
+            $('tbody').append(`
+          <tr>
+           <td>${i+1}</td>
+           <td>
+            ${data[i].locationName}
+           </td>
+           <td>
+            ${data[i].weatherElement[0].time[0].parameter.parameterName}
+            ${data[i].weatherElement[2].time[0].parameter.parameterName}-
+            ${data[i].weatherElement[1].time[0].parameter.parameterName}&deg;C
+            <img src="./img/${iconText0}/${data[i].weatherElement[0].time[0].parameter.parameterValue}.svg" 
+            alt="${data[i].weatherElement[1].time[0].parameter.parameterValue}.svg" style="float;width:2rem">
+            </td>
+           <td>
+            ${data[i].weatherElement[0].time[1].parameter.parameterName}
+            ${data[i].weatherElement[2].time[1].parameter.parameterName}-
+            ${data[i].weatherElement[1].time[1].parameter.parameterName}&deg;C
+            <img src="./img/${iconText1}/${data[i].weatherElement[0].time[1].parameter.parameterValue}.svg" 
+            alt="${data[i].weatherElement[1].time[0].parameter.parameterValue}.svg" style="float;width:2rem">
+            </td>
+           <td> 
+            ${data[i].weatherElement[0].time[2].parameter.parameterName}
+            ${data[i].weatherElement[2].time[2].parameter.parameterName}-
+            ${data[i].weatherElement[1].time[2].parameter.parameterName}&deg;C
+            <img src="./img/${iconText2}/${data[i].weatherElement[0].time[2].parameter.parameterValue}.svg" 
+            alt="${data[i].weatherElement[1].time[0].parameter.parameterValue}.svg" style="float;width:2rem">
+            </td>
+          </tr>
+            `);
+
+          }
+          $('#table_id').DataTable();
+
+            // $('#btn').on('click', function () {
+            //     console.log('btn ok');
+
+            // });
+
+
+            }   
+          });
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
